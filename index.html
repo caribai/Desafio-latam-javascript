@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<title>Centro Médico Ñuñoa</title>
+</head>
+<body>
+    <script src="assets/js/data.js"></script>
+<script>
+    //Se crea una funcion para imprimir la tabla y recibe como parametro la especialidad
+    function print_table(specialty) {
+
+        //Se crea una variable para escribir la cabezera de las tablas
+        var texto ="<thead class='thead-light'><th>HORA</th><th>ESPECIALISTA</th><th>RUT</th><th>Rut</th><th>PREVISION</th></thead>";
+        //Se accede al primer y al ultimo paciente mediante los indices de los arrays y se guardan en variables
+        let first = specialty[0];
+        let last = specialty[specialty.length -1];
+        //se crea un ciclo que recorre el array y se crean los datos de cada tabla
+            for (var i = 0; i < specialty.length; i++) {
+            texto += `<tr>
+                        <td>${specialty[i].hora}</td>
+                        <td>${specialty[i].especialista}</td>
+                        <td>${specialty[i].paciente}</td>
+                        <td>${specialty[i].rut}</td>
+                        <td>${specialty[i].prevision}</td>
+                    </tr>`;
+        }
+        //se imprime la tabla en el documento html y se imprimen los datos del primer y ultimo paciente 
+        document.write(`<table class="table">${texto}</table><hr>`)
+        document.write(`<p><b>Primera atención:</b> ${first.paciente} - ${first.prevision} | <b>Última atención:</b> ${last.paciente} - ${last.prevision}</p>`)  
+    }
+    //Se imprime el nombre de la especialidad y se ejecutan las funciones para imprimir las tablas
+    document.write("<h1>Radiologia</h1>")
+    print_table(radiologia)
+
+    document.write("<h1>Traumatologia</h1>")
+    print_table(traumatologia)
+
+    document.write("<h1>Dental</h1>")
+    print_table(dental)
+   
+</script>
+</body>
+</html>
